@@ -1,0 +1,352 @@
+/* ==========================================================================
+   Seeing the System — slideshow stylesheet
+   1. Fonts   2. Design tokens & themes   3. Stage   4. Converted slides
+   5. Dark-theme colour remap   6. Authoring kit for new slides
+   7. Chrome (controls, overview, notes, help)   8. Presenter view   9. Print
+   ========================================================================== */
+
+/* 1. Fonts — metric-compatible stand-ins for Georgia and Calibri, self-hosted
+   so the deck works offline and looks the same on every machine. */
+@font-face { font-family: Gelasio; src: url(fonts/gelasio-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: Gelasio; src: url(fonts/gelasio-latin-400-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: Gelasio; src: url(fonts/gelasio-latin-700-normal.woff2) format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: Gelasio; src: url(fonts/gelasio-latin-700-italic.woff2) format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: Carlito; src: url(fonts/carlito-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: Carlito; src: url(fonts/carlito-latin-400-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: Carlito; src: url(fonts/carlito-latin-700-normal.woff2) format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: Carlito; src: url(fonts/carlito-latin-700-italic.woff2) format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+
+/* 2. Design tokens — four palettes, each with a light and a dark mode.
+   <html data-palette="terracotta|sage|indigo|graphite" data-theme="light|dark">
+   To add a palette: copy one light + one dark block, rename, and add it to
+   PALETTES in assets/deck.js. */
+:root {
+  --serif: Georgia, Gelasio, "Times New Roman", serif;
+  --sans: Calibri, Carlito, "Segoe UI", system-ui, sans-serif;
+  --mono: Consolas, "SFMono-Regular", Menlo, monospace;
+}
+
+/* Terracotta — the deck as designed */
+:root, html[data-palette="terracotta"][data-theme="light"] {
+  --paper: #FAF7F0; --paper-2: #F3EFE6; --surface: #FFFFFF; --card: #F0E9DC; --card-2: #E8E2D5;
+  --rule: #E5DDD0; --rule-strong: #C9BFB0; --ink: #2C2620; --muted: #78736C;
+  --accent: #D97757; --accent-deep: #BA5A3B; --accent-fill: #D97757; --accent-tint: #FAF2EC;
+  --night: #1F1E1D; --night-ink: #FAF7F0; --night-muted: #E5DDD0; --accent-night: #D97757;
+  --backdrop: #E9E3D8; color-scheme: light;
+}
+/* Terracotta dark: clay softened so it doesn't glare on charcoal */
+html[data-palette="terracotta"][data-theme="dark"] {
+  --paper: #1C1A17; --paper-2: #211E1B; --surface: #24211E; --card: #2A2622; --card-2: #332F2A;
+  --rule: #3A3530; --rule-strong: #4A443D; --ink: #EDE6DA; --muted: #A39C92;
+  --accent: #C9967F; --accent-deep: #D8AE9A; --accent-fill: #9A5A43; --accent-tint: #2E2420;
+  --night: #121110; --night-ink: #F3EDE3; --night-muted: #BDB5AA; --accent-night: #C9967F;
+  --backdrop: #0F0E0D; color-scheme: dark;
+}
+
+/* Sage — quiet green on warm white */
+html[data-palette="sage"][data-theme="light"] {
+  --paper: #F7F7F2; --paper-2: #EFF0E8; --surface: #FFFFFF; --card: #E7EBE0; --card-2: #DCE1D3;
+  --rule: #D8DDCF; --rule-strong: #B9C0AE; --ink: #20261F; --muted: #6A7166;
+  --accent: #4E7C5B; --accent-deep: #3A6147; --accent-fill: #4E7C5B; --accent-tint: #E6EFE6;
+  --night: #1E2520; --night-ink: #F2F4EE; --night-muted: #C9D0C4; --accent-night: #9CC5A1;
+  --backdrop: #E3E6DC; color-scheme: light;
+}
+html[data-palette="sage"][data-theme="dark"] {
+  --paper: #161A17; --paper-2: #1A1F1B; --surface: #1E2420; --card: #232A25; --card-2: #2C342E;
+  --rule: #323A34; --rule-strong: #45504A; --ink: #E4E9E1; --muted: #98A195;
+  --accent: #9BC4A2; --accent-deep: #B8D7BC; --accent-fill: #3F6A4B; --accent-tint: #213027;
+  --night: #0E110F; --night-ink: #EEF2EB; --night-muted: #AEB7AB; --accent-night: #9BC4A2;
+  --backdrop: #0B0D0C; color-scheme: dark;
+}
+
+/* Indigo — ink blue on cool paper */
+html[data-palette="indigo"][data-theme="light"] {
+  --paper: #F7F7FA; --paper-2: #EFF0F5; --surface: #FFFFFF; --card: #E7E9F2; --card-2: #DCDFEB;
+  --rule: #D8DBE7; --rule-strong: #B6BBCD; --ink: #1E2132; --muted: #686C80;
+  --accent: #4C57A8; --accent-deep: #38428C; --accent-fill: #4C57A8; --accent-tint: #E8EAF7;
+  --night: #1B1E2C; --night-ink: #F2F3F8; --night-muted: #C5C8D6; --accent-night: #A3ADF2;
+  --backdrop: #E2E4EC; color-scheme: light;
+}
+html[data-palette="indigo"][data-theme="dark"] {
+  --paper: #13151D; --paper-2: #171A24; --surface: #1B1E29; --card: #1F2331; --card-2: #282D3E;
+  --rule: #2E3346; --rule-strong: #41475E; --ink: #E4E6F0; --muted: #9497AA;
+  --accent: #A0AAF0; --accent-deep: #BCC3F6; --accent-fill: #46509E; --accent-tint: #222844;
+  --night: #0C0E15; --night-ink: #EEF0F8; --night-muted: #ADB1C4; --accent-night: #A0AAF0;
+  --backdrop: #0A0B10; color-scheme: dark;
+}
+
+/* Graphite — neutral greys with a single teal */
+html[data-palette="graphite"][data-theme="light"] {
+  --paper: #F8F8F7; --paper-2: #F0F0EE; --surface: #FFFFFF; --card: #E9EAE8; --card-2: #DEDFDC;
+  --rule: #DADBD8; --rule-strong: #B8BAB6; --ink: #1F2123; --muted: #6B6E71;
+  --accent: #1F7A78; --accent-deep: #17605E; --accent-fill: #1F7A78; --accent-tint: #E3F0EF;
+  --night: #1E2022; --night-ink: #F4F4F3; --night-muted: #C8CACC; --accent-night: #72C4C0;
+  --backdrop: #E4E5E3; color-scheme: light;
+}
+html[data-palette="graphite"][data-theme="dark"] {
+  --paper: #151617; --paper-2: #191A1C; --surface: #1D1F21; --card: #222426; --card-2: #2B2D30;
+  --rule: #323437; --rule-strong: #46494D; --ink: #E7E8E8; --muted: #9A9DA0;
+  --accent: #74C6C1; --accent-deep: #9DD8D4; --accent-fill: #1E6E6B; --accent-tint: #1C2B2B;
+  --night: #0E0F10; --night-ink: #F0F0F0; --night-muted: #B2B5B8; --accent-night: #74C6C1;
+  --backdrop: #0B0B0C; color-scheme: dark;
+}
+
+/* Controls take their colours from whichever palette is active */
+:root {
+  --chrome-bg: color-mix(in srgb, var(--paper) 92%, transparent);
+  --chrome-ink: var(--ink);
+  --chrome-line: color-mix(in srgb, var(--ink) 15%, transparent);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--letterbox, var(--backdrop));
+  color: var(--ink);
+  font-family: var(--sans);
+  overflow: hidden;
+  transition: background-color .3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+body.idle { cursor: none; }
+
+/* 3. Stage — every slide is authored on a fixed 1920×1080 canvas and scaled
+   to fit the window, so layouts never reflow between laptop and projector. */
+.viewport { position: fixed; inset: 0; }
+.stage {
+  position: absolute; left: 50%; top: 50%;
+  width: 1920px; height: 1080px;
+  transform: translate(-50%, -50%) scale(var(--scale, .5));
+  transform-origin: center center;
+}
+.slide {
+  position: absolute; inset: 0;
+  width: 1920px; height: 1080px;
+  overflow: hidden;
+  display: none;
+  background: var(--slide-bg, var(--paper));
+}
+.slide.active { display: block; animation: slide-in .28s ease-out; }
+@keyframes slide-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .slide.active { animation: none; } body { transition: none; } }
+.slide aside.notes { display: none !important; }
+
+/* 4. Converted slides: absolutely positioned boxes, exactly as in the PPTX. */
+.canvas .s { position: absolute; margin: 0; }
+.canvas .tx {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  white-space: pre-wrap; overflow-wrap: break-word;
+}
+.canvas .tx p { margin: 0; }
+.canvas .tx .bu { display: inline-block; text-indent: 0; }
+.canvas .tx a { text-decoration: underline; }
+.canvas svg.s { overflow: visible; pointer-events: none; }
+.canvas .pic { overflow: hidden; }
+.canvas .pic img { display: block; object-fit: fill; }
+
+/* 5. Palette remap for converted slides. Converted slides reference every
+   colour as var(--f-HEX) (fills), var(--t-HEX) (text) or var(--l-HEX) (lines),
+   with the original hex as fallback. Below, each original colour is pointed
+   at a palette token. The original look (terracotta, light) is left untouched
+   so it renders exactly as the PowerPoint did. */
+
+/* Light "paper" slides */
+html:not([data-look="terracotta-light"]) .slide.paper {
+  --f-FAF7F0: var(--paper); --f-FFFFFF: var(--surface); --f-F0E9DC: var(--card);
+  --f-F3EFE6: var(--paper-2); --f-F5F1E8: var(--paper-2); --f-F5F0E8: var(--paper-2); --f-F5F2E8: var(--paper-2);
+  --f-E8E2D5: var(--card-2); --f-FAF2EC: var(--accent-tint);
+  --f-D97757: var(--accent-fill); --f-C1440E: var(--accent-fill); --f-BA5A3B: var(--accent-fill);
+
+  --t-2C2620: var(--ink); --t-1F2421: var(--ink); --t-1C1C1A: var(--ink); --t-2E2E2B: var(--ink);
+  --t-2C2C2C: var(--ink); --t-000000: var(--ink); --t-1A1208: var(--ink);
+  --t-78736C: var(--muted); --t-5C5C56: var(--muted); --t-8A8A8A: var(--muted); --t-6E665C: var(--muted); --t-8C8378: var(--muted);
+  --t-D97757: var(--accent); --t-BA5A3B: var(--accent-deep); --t-C1440E: var(--accent-deep); --t-C0714A: var(--accent-deep);
+
+  --l-E5DDD0: var(--rule); --l-DEDAD4: var(--rule); --l-E8D8C8: var(--rule); --l-D5CFC4: var(--rule); --l-F0E9DC: var(--rule);
+  --l-C9BFB0: var(--rule-strong); --l-A8A093: var(--rule-strong);
+  --l-78736C: var(--muted); --l-5C5C56: var(--muted); --l-2C2620: var(--ink); --l-1C1C1A: var(--ink);
+  --l-D97757: var(--accent); --l-C1440E: var(--accent); --l-C0714A: var(--accent);
+}
+
+/* Dark section-divider slides (the ones with the big numerals) */
+html:not([data-look="terracotta-light"]) .slide.night[style*="--f-1F1E1D"] {
+  --f-1F1E1D: var(--night); --f-D97757: var(--accent-night); --f-BA5A3B: var(--accent-night);
+  --t-FAF7F0: var(--night-ink); --t-E5DDD0: var(--night-muted); --t-78736C: var(--night-muted);
+  --t-D97757: var(--accent-night);
+  --l-D97757: var(--accent-night); --l-BA5A3B: var(--accent-night);
+}
+
+/* Supporting colours (greens, teals, links) that are too dark on a dark ground */
+html[data-theme="dark"] .slide.paper {
+  --f-EBF4F0: #1F2A26; --f-E8F0D8: #252B1E; --f-F0F6FC: #1E2530;
+  --t-5B6B57: #A3B39F; --t-C0392B: #EA7266; --t-2C5F2D: #8FC690; --t-1A4A1C: #8FC690;
+  --t-0D6E6E: #5FC0BE; --t-0563C1: #7DB3FF; --t-B87A1A: #E0AE55;
+}
+html[data-theme="dark"] .slide.paper .pic img { filter: brightness(.9); }
+
+/* 6. Authoring kit — for slides written by hand (see slides/templates/).
+   These use normal flow layout and the theme tokens, so they switch themes
+   automatically. */
+.slide.flow {
+  --slide-bg: var(--paper);
+  color: var(--ink);
+  padding: 120px 160px 110px;
+  font-family: var(--sans);
+  font-size: 32px; line-height: 1.45;
+}
+.slide.flow.night { --slide-bg: var(--night); color: var(--night-ink); }
+.flow .kicker { font-family: var(--serif); font-style: italic; color: var(--accent); font-size: 24px; margin: 0 0 28px; }
+.flow h1, .flow h2 { font-family: var(--serif); font-weight: 400; color: inherit; margin: 0 0 32px; letter-spacing: -.005em; }
+.flow h1 { font-size: 88px; line-height: 1.1; }
+.flow h2 { font-size: 60px; line-height: 1.15; }
+.flow .lede { font-family: var(--serif); font-style: italic; color: var(--accent); font-size: 44px; line-height: 1.3; margin: 0 0 40px; max-width: 26em; }
+.flow p { margin: 0 0 24px; max-width: 42em; }
+.flow .muted { color: var(--muted); }
+.flow ul { margin: 0; padding-left: 1.1em; max-width: 42em; }
+.flow li { margin: 0 0 18px; }
+.flow li::marker { color: var(--accent); }
+.flow .foot { position: absolute; left: 160px; right: 160px; bottom: 56px; font-size: 20px; color: var(--muted); font-style: italic; }
+.flow .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 32px; margin-top: 16px; }
+.flow .card { background: var(--card); padding: 36px 40px; font-size: 26px; }
+.flow .card h3 { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent); font-size: 30px; margin: 0 0 16px; }
+.flow.center { flex-direction: column; justify-content: center; }
+/* flex only while shown, so hidden slides stay hidden */
+.slide.flow.center.active, .ov-thumb .slide.flow.center, .pv-frame .slide.flow.center,
+.slide.flow.section.active, .ov-thumb .slide.flow.section, .pv-frame .slide.flow.section { display: flex; }
+.flow.section { align-items: center; gap: 72px; padding-left: 200px; }
+.flow.section .numeral { font-family: var(--serif); font-style: italic; color: var(--accent); font-size: 200px; line-height: 1; }
+.flow.section h1 { margin: 0 0 16px; font-size: 80px; }
+.flow.section p { color: inherit; opacity: .75; font-family: var(--serif); font-style: italic; }
+.flow.image { padding: 0; }
+.flow.image img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.flow.image.cover img { object-fit: cover; }
+.flow.image figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 24px 160px; font-family: var(--serif); font-style: italic; font-size: 30px; color: var(--accent); background: color-mix(in srgb, var(--paper) 85%, transparent); }
+html[data-theme="dark"] .flow.image img { filter: brightness(.9); }
+
+/* 7. Chrome */
+.progress { position: fixed; left: 0; bottom: 0; height: 3px; background: var(--accent); width: 0; transition: width .3s ease; z-index: 20; opacity: .8; }
+.controls {
+  position: fixed; right: 16px; bottom: 16px; z-index: 30;
+  display: flex; align-items: center; gap: 2px;
+  padding: 4px; border-radius: 999px;
+  background: var(--chrome-bg); color: var(--chrome-ink);
+  border: 1px solid var(--chrome-line);
+  backdrop-filter: blur(8px);
+  font: 14px/1 var(--sans);
+  transition: opacity .35s ease, transform .35s ease;
+}
+body.idle .controls, body.idle .progress { opacity: 0; transform: translateY(6px); pointer-events: none; }
+.controls button {
+  appearance: none; border: 0; background: transparent; color: inherit;
+  width: 36px; height: 36px; border-radius: 999px; display: grid; place-items: center; cursor: pointer;
+}
+.controls button:hover { background: var(--chrome-line); }
+.controls button:focus-visible, .ov-tile:focus-visible, .dialog button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.controls svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.controls .count { min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; padding: 0 4px; opacity: .8; }
+.controls .sep { width: 1px; height: 20px; background: var(--chrome-line); margin: 0 4px; }
+html[data-theme="dark"] .i-sun { display: none; }
+html:not([data-theme="dark"]) .i-moon { display: none; }
+
+.jump { position: fixed; left: 50%; top: 24px; transform: translateX(-50%); z-index: 40; padding: 10px 18px; border-radius: 10px; background: var(--chrome-bg); color: var(--chrome-ink); border: 1px solid var(--chrome-line); font: 22px var(--sans); display: none; }
+.jump.on { display: block; }
+
+.blackout { position: fixed; inset: 0; background: #000; z-index: 25; display: none; }
+.blackout.on { display: block; }
+
+.overlay { position: fixed; inset: 0; z-index: 50; display: none; background: color-mix(in srgb, var(--backdrop) 94%, transparent); backdrop-filter: blur(6px); color: var(--chrome-ink); }
+.overlay.on { display: block; }
+.overview { overflow-y: auto; padding: 32px 32px 80px; }
+.ov-head { display: flex; justify-content: space-between; align-items: baseline; max-width: 1600px; margin: 0 auto 20px; font: 16px var(--sans); }
+.ov-head h2 { font: 400 28px var(--serif); margin: 0; }
+.ov-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; max-width: 1600px; margin: 0 auto; }
+.ov-tile { appearance: none; border: 0; padding: 0; background: none; color: inherit; cursor: pointer; text-align: left; font: 13px/1.3 var(--sans); }
+.ov-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; border-radius: 6px; outline: 1px solid var(--chrome-line); background: var(--paper); }
+.ov-thumb .slide { display: block; transform-origin: 0 0; animation: none; }
+.ov-tile.current .ov-thumb { outline: 3px solid var(--accent); }
+.ov-tile.is-hidden .ov-thumb { opacity: .5; }
+.ov-label { display: flex; gap: 8px; margin-top: 8px; opacity: .85; }
+.ov-label b { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--accent); }
+.ov-label span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.notes-panel {
+  position: fixed; left: 16px; right: 16px; bottom: 64px; z-index: 35; max-height: 34vh; overflow: auto;
+  padding: 20px 24px; border-radius: 12px; display: none;
+  background: var(--chrome-bg); color: var(--chrome-ink); border: 1px solid var(--chrome-line);
+  backdrop-filter: blur(8px); font: 18px/1.5 var(--sans);
+}
+.notes-panel.on { display: block; }
+.notes-panel p { margin: 0 0 10px; max-width: 70em; }
+.notes-panel .empty { opacity: .6; font-style: italic; }
+
+.help { display: none; place-items: center; }
+.help.on { display: grid; }
+.dialog { background: var(--chrome-bg); border: 1px solid var(--chrome-line); border-radius: 14px; padding: 28px 32px; max-width: 560px; width: calc(100% - 32px); font: 16px/1.5 var(--sans); }
+.dialog h2 { font: 400 26px var(--serif); margin: 0 0 16px; }
+.dialog table { border-collapse: collapse; width: 100%; }
+.dialog td { padding: 6px 0; vertical-align: top; }
+.dialog td:first-child { width: 42%; padding-right: 16px; }
+kbd { font: 13px var(--mono); padding: 2px 7px; border-radius: 5px; border: 1px solid var(--chrome-line); background: var(--chrome-line); }
+
+.message { position: fixed; inset: 0; display: grid; place-items: center; padding: 32px; font: 20px/1.5 var(--sans); color: var(--chrome-ink); text-align: center; }
+.message code { font: 17px var(--mono); background: var(--chrome-line); padding: 2px 8px; border-radius: 5px; }
+.message h1 { font: 400 40px var(--serif); margin: 0 0 12px; }
+
+/* 8. Presenter view (index.html?presenter) */
+body.presenter { background: #151412; color: #EDE6DA; overflow: auto; }
+body.presenter .viewport, body.presenter .controls, body.presenter .progress { display: none; }
+.pv { display: grid; grid-template-columns: 1.55fr 1fr; grid-template-rows: auto 1fr; gap: 20px; height: 100vh; padding: 20px; font-family: var(--sans); }
+.pv-bar { grid-column: 1 / -1; display: flex; align-items: center; gap: 24px; font-size: 20px; }
+.pv-bar .pv-time { font: 700 34px var(--sans); font-variant-numeric: tabular-nums; }
+.pv-bar .pv-clock { opacity: .6; font-variant-numeric: tabular-nums; }
+.pv-bar .pv-count { margin-left: auto; font-variant-numeric: tabular-nums; }
+.pv-bar button { appearance: none; background: #2A2724; color: inherit; border: 1px solid #3A3631; border-radius: 8px; padding: 8px 14px; font: 15px var(--sans); cursor: pointer; }
+.pv-bar button:hover { background: #34302C; }
+.pv-main { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+.pv-side { display: flex; flex-direction: column; gap: 16px; min-height: 0; }
+.pv-frame { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: 8px; background: #000; outline: 1px solid #3A3631; }
+.pv-frame .slide { display: block; transform-origin: 0 0; animation: none; }
+.pv-label { font-size: 14px; opacity: .6; }
+.pv-notes { flex: 1; overflow: auto; background: #1E1C1A; border-radius: 8px; padding: 20px 24px; font-size: 22px; line-height: 1.5; }
+.pv-notes p { margin: 0 0 14px; }
+.pv-notes .empty { opacity: .5; font-style: italic; }
+
+/* 9. Print / Save as PDF — one visible slide per page, in the current theme. */
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { overflow: visible; height: auto; background: none; }
+  .controls, .progress, .overlay, .notes-panel, .jump, .blackout { display: none !important; }
+  .viewport { position: static; }
+  .stage { position: static; transform: none; width: auto; height: auto; }
+  .slide { position: relative; display: block !important;
+    /* flow layouts keep their flex in print */ }
+  .slide.flow.center, .slide.flow.section { display: flex !important; }
+  .slide { break-after: page; animation: none !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .slide.slide.slide[data-hidden="true"] { display: none !important; }
+}
+
+/* Small transparent logos (GitHub, Nestlé…) are dark artwork; in the dark
+   theme give them a light plate so they stay legible. */
+html[data-theme="dark"] .slide.paper .pic.logo { background: #EDE6DA; border-radius: 6px; overflow: visible; box-shadow: 0 0 0 6px #EDE6DA; }
+html[data-theme="dark"] .slide.paper .pic.logo img { filter: none; }
+
+/* Palette picker */
+.palette-menu {
+  position: fixed; right: 16px; bottom: 64px; z-index: 36; display: none;
+  padding: 8px; border-radius: 14px; min-width: 220px;
+  background: var(--chrome-bg); color: var(--chrome-ink); border: 1px solid var(--chrome-line);
+  backdrop-filter: blur(8px); font: 15px var(--sans);
+}
+.palette-menu.on { display: block; }
+.palette-menu p { margin: 4px 8px 8px; font-size: 13px; opacity: .7; }
+.palette-menu button {
+  appearance: none; border: 0; background: none; color: inherit; font: inherit; cursor: pointer;
+  display: flex; align-items: center; gap: 12px; width: 100%; padding: 8px; border-radius: 9px; text-align: left;
+}
+.palette-menu button:hover { background: var(--chrome-line); }
+.palette-menu button[aria-checked="true"] { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.palette-menu button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.swatch { display: inline-flex; width: 44px; height: 24px; border-radius: 6px; overflow: hidden; outline: 1px solid var(--chrome-line); flex: none; }
+.swatch i { flex: 1; }
+.palette-menu .mode { border-top: 1px solid var(--chrome-line); margin-top: 6px; padding-top: 10px; }
