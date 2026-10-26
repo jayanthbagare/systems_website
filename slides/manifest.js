@@ -11,6 +11,7 @@ window.DECK_MANIFEST = [
   { file: "s001-seeing-the-system.html" },                                   // Seeing the System
   { file: "s112-we-don-t-know.html" },                         // We Don’t Know
   { file: "s002-what-is-the-difference.html" },                              // What is the difference?
+  { file: "s022-morpheus.html" },                              // What is the difference?
   { file: "s003-financial-chief-architect.html" },                           // Financial & Chief Architect
   { file: "s004-day-one-seeing.html" },                                      // Day One · Seeing
   { file: "s005-how-these-two-days-run.html" },                              // How these two days run
