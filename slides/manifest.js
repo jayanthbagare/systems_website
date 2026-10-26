@@ -90,7 +90,7 @@ window.DECK_MANIFEST = [
   { file: "s105-sort-the-choke-before-you-treat.html" },                     // Sort the Choke Before You Treat It
   { file: "s106-ontology-unbundle-what-each-side-thinks.html" },             // Ontology — Unbundle What Each Side Thinks Exists
   { file: "s107-your-delivery-cycle-is-a-system.html" },                     // Your delivery cycle is a system too
-  { file: "s108-2.html" },                                                   // 2
+  { file: "c01-from-seeing-to-building.html" },                              // From seeing to building (closing takeaway)
   { file: "s110-discussion.html" },                                          // Discussion
   { file: "s111-where-this-draws-from.html" },                               // Where this draws from
   { file: "s109-what-kind-of-being-is-the.html" },                           // What kind of being is the agent
@@ -204,4 +204,14 @@ window.DECK_MANIFEST = [
   { file: "s192-one-task-is-not-one-call.html", hidden: true },              // One task is not one call.
   { file: "s193-the-stopping-condition-is-the-oe.html", hidden: true },      // The stopping condition is the OE control.
   { file: "s194-oe-is-a-range-not-a.html", hidden: true },                   // ΔOE is a range, not a number.
+  { file: "s108-2.html", hidden: true },                                     // Three anchors to carry out (replaced by the hourglass)
+  // ---- Presenter's guide — hidden, never shown to the room (press H, or ?all) ----
+  { file: "g01-presenters-guide.html", hidden: true },                       // Presenter's guide
+  { file: "g02-the-arc.html", hidden: true },                                // The arc
+  { file: "g03-day-one-acts.html", hidden: true },                           // Day 1, act by act
+  { file: "g04-day-two-acts.html", hidden: true },                           // Day 2, act by act
+  { file: "g05-the-threads.html", hidden: true },                            // The threads
+  { file: "g06-the-clock.html", hidden: true },                              // The clock
+  { file: "g07-at-the-front.html", hidden: true },                           // At the front
+  { file: "g08-the-week-before.html", hidden: true },                        // The week before
 ];
