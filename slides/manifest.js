@@ -204,4 +204,13 @@ window.DECK_MANIFEST = [
   { file: "s192-one-task-is-not-one-call.html", hidden: true },              // One task is not one call.
   { file: "s193-the-stopping-condition-is-the-oe.html", hidden: true },      // The stopping condition is the OE control.
   { file: "s194-oe-is-a-range-not-a.html", hidden: true },                   // ΔOE is a range, not a number.
+  // ---- Presenter's guide — hidden, never shown to the room (press H, or ?all) ----
+  { file: "g01-presenters-guide.html", hidden: true },                       // Presenter's guide
+  { file: "g02-the-arc.html", hidden: true },                                // The arc
+  { file: "g03-day-one-acts.html", hidden: true },                           // Day 1, act by act
+  { file: "g04-day-two-acts.html", hidden: true },                           // Day 2, act by act
+  { file: "g05-the-threads.html", hidden: true },                            // The threads
+  { file: "g06-the-clock.html", hidden: true },                              // The clock
+  { file: "g07-at-the-front.html", hidden: true },                           // At the front
+  { file: "g08-the-week-before.html", hidden: true },                        // The week before
 ];
