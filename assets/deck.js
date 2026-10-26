@@ -236,6 +236,88 @@
     flash(showHidden ? `Showing hidden slides (${list.length} total)` : `Hidden slides skipped (${list.length} in the show)`);
   }
 
+  /* ---------- download as PowerPoint ----------
+     Renders every slide in the current show (hidden ones too, if H is on) to a
+     1920×1080 picture in the current palette, then builds a 16:9 .pptx with the
+     speaker notes attached. The two libraries load only on first use. */
+  let exporting = false;
+  function loadScript(src) {
+    return new Promise((ok, no) => {
+      if (document.querySelector(`script[src="${src}"]`)) return ok();
+      const s = document.createElement('script');
+      s.src = src; s.onload = ok; s.onerror = () => no(new Error(`could not load ${src}`));
+      document.head.appendChild(s);
+    });
+  }
+  function notesText(slide) {
+    const n = slide.querySelector('aside.notes');
+    if (!n) return '';
+    const paras = [...n.querySelectorAll('p')].map(p => p.textContent.trim()).filter(Boolean);
+    return paras.length ? paras.join('\n\n') : n.textContent.trim();
+  }
+  // SVG drawn with CSS classes (the arc chart) loses its colours in the picture,
+  // so resolve each SVG element's styles to plain values before rendering.
+  const SVG_PROPS = ['fill', 'fill-opacity', 'stroke', 'stroke-width', 'stroke-opacity', 'stroke-dasharray',
+    'stroke-linejoin', 'stroke-linecap', 'opacity', 'paint-order', 'font-family', 'font-size', 'font-style',
+    'font-weight', 'letter-spacing'];
+  function inlineSvgStyles(root) {
+    root.querySelectorAll('svg, svg *').forEach(el => {
+      const cs = getComputedStyle(el);
+      SVG_PROPS.forEach(p => el.style.setProperty(p, cs.getPropertyValue(p)));
+    });
+  }
+  async function downloadPptx() {
+    if (exporting || !list.length) return;
+    exporting = true;
+    const btn = $('[data-action="download"]');
+    btn?.setAttribute('aria-busy', 'true');
+    const holder = document.createElement('div');
+    holder.className = 'export-holder';
+    holder.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(holder);
+    const slides = list.slice();
+    try {
+      flash('Preparing PowerPoint…', 60000);
+      await Promise.all([loadScript('assets/vendor/html-to-image.js'), loadScript('assets/vendor/pptxgen.bundle.js')]);
+      await document.fonts.ready;
+      const pres = new window.PptxGenJS();
+      pres.layout = 'LAYOUT_WIDE';
+      pres.title = 'Seeing the System · Building at the Constraint';
+      pres.author = 'Jayanth, Bharath · SAP';
+      let fontEmbedCSS;
+      for (let i = 0; i < slides.length; i++) {
+        flash(`Rendering slide ${i + 1} of ${slides.length}…`, 60000);
+        const c = slides[i].cloneNode(true);
+        c.classList.add('active');
+        c.style.animation = 'none';
+        holder.replaceChildren(c);
+        await Promise.all([...c.querySelectorAll('img')].map(im => im.decode().catch(() => {})));
+        inlineSvgStyles(c);
+        if (fontEmbedCSS === undefined) fontEmbedCSS = await window.htmlToImage.getFontEmbedCSS(c);
+        const data = await window.htmlToImage.toJpeg(c, {
+          width: W, height: H, pixelRatio: 1, quality: 0.92, fontEmbedCSS,
+          backgroundColor: getComputedStyle(c).backgroundColor,
+          filter: node => node.tagName !== 'ASIDE',
+        });
+        const s = pres.addSlide();
+        s.addImage({ data, x: 0, y: 0, w: '100%', h: '100%' });
+        const t = notesText(slides[i]);
+        if (t) s.addNotes(t);
+      }
+      flash('Saving…', 60000);
+      const name = `Seeing-the-System-${look.palette}-${look.theme}${showHidden ? '-with-hidden' : ''}.pptx`;
+      await pres.writeFile({ fileName: name });
+      flash(`Downloaded ${slides.length} slides as PowerPoint`, 2500);
+    } catch (err) {
+      console.error(err);
+      flash(`Download failed: ${err.message}`, 5000);
+    } finally {
+      holder.remove();
+      exporting = false;
+      btn?.removeAttribute('aria-busy');
+    }
+  }
+
   /* ---------- small transient message ---------- */
   const jump = $('#jump');
   let jumpBuf = '', jumpTimer;
@@ -270,6 +352,7 @@
       case 'p': case 'P': openPresenter(); break;
       case 'b': case 'B': case '.': blackout.classList.toggle('on'); break;
       case 'h': case 'H': toggleHidden(); break;
+      case 'd': case 'D': downloadPptx(); break;
       case '?': help.classList.toggle('on'); break;
     }
   });
@@ -280,7 +363,7 @@
     if (!a) { if (!e.target.closest('#palette-menu')) paletteMenu?.classList.remove('on'); return; }
     if (a.dataset.action !== 'palette') paletteMenu?.classList.remove('on');
     ({ prev, next, theme: toggleTheme, palette: () => togglePaletteMenu(), overview: openOverview, fullscreen: toggleFullscreen,
-       notes: toggleNotes, presenter: openPresenter, help: () => help.classList.toggle('on'),
+       notes: toggleNotes, presenter: openPresenter, download: downloadPptx, help: () => help.classList.toggle('on'),
        close: closeOverlays })[a.dataset.action]?.();
   });
   help.addEventListener('click', e => { if (e.target === help) closeOverlays(); });
