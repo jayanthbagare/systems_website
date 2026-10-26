@@ -9,6 +9,7 @@
 window.DECK_MANIFEST = [
   // ---- Day 1 · Seeing ----
   { file: "s001-seeing-the-system.html" },                                   // Seeing the System
+  { file: "s112-we-don-t-know.html" },                         // We Don’t Know
   { file: "s002-what-is-the-difference.html" },                              // What is the difference?
   { file: "s003-financial-chief-architect.html" },                           // Financial & Chief Architect
   { file: "s004-day-one-seeing.html" },                                      // Day One · Seeing
@@ -43,7 +44,9 @@ window.DECK_MANIFEST = [
   { file: "s035-the-bottleneck-moves.html" },                                // The bottleneck moves.
   { file: "s036-the-five-focusing-steps.html" },                             // The Five Focusing Steps
   { file: "s038-exploit-it.html" },                                          // Exploit it.
+  { file: "s039-subordinate-everything-else.html" },           // Subordinate everything else.
   { file: "s040-elevate-the-constraint.html" },                              // Elevate the constraint.
+  { file: "s041-repeat-the-constraint-will-move.html" },       // Repeat. The constraint will move.
   { file: "s042-find-the-bottleneck.html" },                                 // Find the bottleneck
   { file: "s044-four-defensible-answers-one-is-the.html" },                  // Four defensible answers. One is the constraint.
   { file: "s046-the-constraint-is-the-healthy-vendor.html" },                // The constraint is the healthy vendor pool.
