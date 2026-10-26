@@ -17,10 +17,14 @@ window.DECK_MANIFEST = [
   { file: "s007-set-up-before-the-first-lab.html" },                         // Set up before the first lab
   { file: "s008-seeing-the-system.html" },                                   // Seeing the System
   { file: "s009-a-system-is-not-the-sum.html" },                             // A system is not the sum of its parts.
-  { file: "s033-systems-constraints-agents.html" },                          // Systems · Constraints · Agents
+  { file: "s119-slide-119.html"},                             // Slide 119
+  { file: "s017-i-systems-thinking.html"},                    // I · Systems thinking
+  { file: "s033-systems-constraints-agents.html",hidden:true },                          // Systems · Constraints · Agents
   { file: "s012-slide-12.html" },                                            // Slide 12
   { file: "s013-slide-13.html" },                                            // Slide 13
+  { file: "s015-slide-15.html"},                              // Slide 15
   { file: "s014-slide-14.html" },                                            // Slide 14
+  { file: "s121-slide-121.html",hidden:true },                             // Slide 121
   { file: "s122-structure-generates-behaviour.html" },                       // Structure generates behaviour.
   { file: "s016-loopy-demo.html" },                                          // LOOPY DEMO
   { file: "s021-local-optimisation-global-optimisation.html" },              // Local optimisation ≠ global optimisation
@@ -32,6 +36,7 @@ window.DECK_MANIFEST = [
   { file: "s027-i-the-stocks-and-flows.html" },                              // I · The Stocks and Flows
   { file: "s028-what-a-good-loop-map-shows.html" },                          // What a good loop map shows
   { file: "s125-not-one-loop-loops-interacting.html" },                      // Not one loop. Loops interacting.
+  { file: "s020-i-systems-thinking.html"},                    // I · Systems thinking
   { file: "s030-the-constraint.html" },                                      // The Constraint
   { file: "s031-i-an-image-to-keep.html" },                                  // I · An image to keep
   { file: "s032-exactly-one-binding-constraint-at-a.html" },                 // exactly one binding constraint at a time.
@@ -64,32 +69,33 @@ window.DECK_MANIFEST = [
   { file: "s092-the-method-imagine-first-then-let.html" },                   // The Method: Imagine First, Then Let It Settle
   { file: "s094-run-this-on-any-problem.html" },                             // Run This on Any Problem
   { file: "s095-running-the-method-rfp-bid-response.html" },                 // Running the Method: RFP → Bid Response
-  { file: "s124-who-climbs-and-who-jumps.html" },                            // Who climbs, and who jumps.
+  { file: "s124-who-climbs-and-who-jumps.html",hidden:true },                            // Who climbs, and who jumps.
   { file: "s097-fast-and-slow-as-an-architecture.html" },                    // Fast and slow, as an architecture question.
   { file: "s098-your-erp-already-runs-this-split.html" },                    // Your ERP already runs this split.
   { file: "s099-the-middle-tier-just-became-buyable.html" },                 // The middle tier just became buyable.
   { file: "s100-system-2-is-your-constraint.html" },                         // System 2 is your constraint.
   { file: "s064-building-at-the-constraint.html" },                          // Building at the Constraint
   { file: "s066-slide-66.html" },                                            // Slide 66
-  { file: "s067-slide-67.html" },                                            // Slide 67
+  { file: "s068-slide-68.html"},                              // Slide 68
+  { file: "s067-slide-67.html", hidden:true },                                            // Slide 67
   { file: "s069-five-subsystems-like-a-kitchen-s.html" },                    // Five subsystems — like a kitchen's five areas
   { file: "s083-the-rfq-agent-what-it-does.html" },                          // The RFQ-agent — what it does
   { file: "s084-five-subsystems-in-concrete-terms.html" },                   // Five subsystems, in concrete terms
+  { file: "s080-what-a-skill-is-and-is.html" },                              // What a skill is, and is not
   { file: "s076-install-a-harness-build-the-watchdog.html" },                // Install a harness. Build the Watchdog.
   { file: "s077-what-separates-an-agent-from-a.html" },                      // What separates an agent from a threshold alert
-  { file: "s079-building-skills.html" },                                     // Building Skills
-  { file: "s080-what-a-skill-is-and-is.html" },                              // What a skill is, and is not
-  { file: "s081-loop-engineering.html" },                                    // Loop Engineering
-  { file: "s082-converging-vs-diverging.html" },                             // Converging vs Diverging
-  { file: "s086-build-the-tactician.html" },                                 // Build the Tactician
-  { file: "s087-three-months-three-plans-or-you.html" },                     // Three months. Three plans. Or you built a sorting function.
+  { file: "s079-building-skills.html", hidden:true },                                     // Building Skills
+  { file: "s081-loop-engineering.html", hidden:true },                                    // Loop Engineering
+  { file: "s082-converging-vs-diverging.html", hidden:true },                             // Converging vs Diverging
+  { file: "s086-build-the-tactician.html", hidden:true },                                 // Build the Tactician
+  { file: "s087-three-months-three-plans-or-you.html", hidden:true},                     // Three months. Three plans. Or you built a sorting function.
   { file: "s088-the-agent-returns-the-human-to.html" },                      // The agent returns the human to where their attention belongs
   { file: "s102-take-it-back.html" },                                        // Take it back
   { file: "s103-the-constraint-hides-at-the-boundary.html" },                // The Constraint Hides at the Boundary
   { file: "s104-why-the-seam-chokes-impedance-mismatch.html" },              // Why the Seam Chokes: Impedance Mismatch
   { file: "s105-sort-the-choke-before-you-treat.html" },                     // Sort the Choke Before You Treat It
   { file: "s106-ontology-unbundle-what-each-side-thinks.html" },             // Ontology — Unbundle What Each Side Thinks Exists
-  { file: "s107-your-delivery-cycle-is-a-system.html" },                     // Your delivery cycle is a system too
+  { file: "s107-your-delivery-cycle-is-a-system.html",hidden:true },                     // Your delivery cycle is a system too
   { file: "c01-from-seeing-to-building.html" },                              // From seeing to building (closing takeaway)
   { file: "s110-discussion.html" },                                          // Discussion
   { file: "s111-where-this-draws-from.html" },                               // Where this draws from
