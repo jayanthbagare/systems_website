@@ -44,16 +44,16 @@ window.DECK_MANIFEST = [
   { file: "s032-exactly-one-binding-constraint-at-a.html" },                 // exactly one binding constraint at a time.
   { file: "s035-the-bottleneck-moves.html" },                                // The bottleneck moves.
   { file: "s036-the-five-focusing-steps.html" },                             // The Five Focusing Steps
-  { file: "s038-exploit-it.html" },                                          // Exploit it.
-  { file: "s039-subordinate-everything-else.html" },           // Subordinate everything else.
-  { file: "s040-elevate-the-constraint.html" },                              // Elevate the constraint.
-  { file: "s041-repeat-the-constraint-will-move.html" },       // Repeat. The constraint will move.
+  { file: "s038-exploit-it.html",hidden:true },                                          // Exploit it.
+  { file: "s039-subordinate-everything-else.html",hidden:true },           // Subordinate everything else.
+  { file: "s040-elevate-the-constraint.html",hidden:true },                              // Elevate the constraint.
+  { file: "s041-repeat-the-constraint-will-move.html",hidden:true },       // Repeat. The constraint will move.
   { file: "s042-find-the-bottleneck.html" },                                 // Find the bottleneck
   { file: "s044-four-defensible-answers-one-is-the.html" },                  // Four defensible answers. One is the constraint.
   { file: "s046-the-constraint-is-the-healthy-vendor.html" },                // The constraint is the healthy vendor pool.
   { file: "s047-one-shock-seven-steps-a-constraint.html" },                  // One shock, seven steps, a constraint nobody named
-  { file: "s048-the-loudest-signal-is-not-the.html" },                       // The loudest signal is not the constraint
-  { file: "s123-when-the-limit-itself-is-eroding.html" },                    // When the limit itself is eroding.
+  { file: "s048-the-loudest-signal-is-not-the.html",hidden:true },                       // The loudest signal is not the constraint
+  { file: "s123-when-the-limit-itself-is-eroding.html",hidden:true },                    // When the limit itself is eroding.
   { file: "s050-iii.html" },                                                 // III
   { file: "s052-i.html" },                                                   // I
   { file: "s053-slide-53.html" },                                            // Slide 53
