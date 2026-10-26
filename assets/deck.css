@@ -253,6 +253,10 @@ html[data-theme="dark"] .flow.image img { filter: brightness(.9); }
 .flow.dense .card li { margin: 0 0 8px; }
 .flow .ref { color: var(--muted); font-style: normal; white-space: nowrap; }
 
+/* Off-screen area the PowerPoint export renders each slide into */
+.export-holder { position: fixed; left: -100000px; top: 0; width: 1920px; height: 1080px; overflow: hidden; pointer-events: none; }
+.controls button[aria-busy="true"] { opacity: .45; cursor: progress; }
+
 /* 7. Chrome */
 .progress { position: fixed; left: 0; bottom: 0; height: 3px; background: var(--accent); width: 0; transition: width .3s ease; z-index: 20; opacity: .8; }
 .controls {

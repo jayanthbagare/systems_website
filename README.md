@@ -35,6 +35,7 @@ The empty `.nojekyll` file must stay; it stops GitHub from hiding folders.
 | P | Presenter view in a new window: current slide, next slide, notes, timer. Put it on your laptop, the main window on the projector. They stay in sync. |
 | B | Black screen; any key brings it back |
 | H | Include or skip hidden slides |
+| D | Download as PowerPoint: every slide in the show, in the current palette, with speaker notes |
 | ? | This list |
 
 Useful links: `index.html#/42` opens slide 42, `?palette=sage&theme=dark` picks a look, `?all` includes hidden slides.
@@ -55,6 +56,10 @@ Palettes recolour everything drawn on the slides — backgrounds, panels, text, 
 Pictures (the NotebookLM illustrations, photos) keep their own colours.
 Palettes live in section 2 of `assets/deck.css`; to add one, copy a light and a dark block and add an entry to `PALETTES` in `assets/deck.js`.
 To make a PDF handout, open the deck and print to PDF (Chrome: Save as PDF, background graphics on).
+To get a PowerPoint, press D or click the download button. It renders the slides currently in the show
+(press H first to include hidden ones) as pictures in the palette you are using, with the speaker notes,
+and saves a 16:9 .pptx. The text is not editable in PowerPoint; edit the slide files instead.
+It takes a minute or so for the whole deck. The libraries it uses live in `assets/vendor/`.
 
 ## Adding, removing and reordering slides
 
