@@ -223,6 +223,35 @@ html[data-theme="dark"] .slide.paper .pic img { filter: brightness(.9); }
 .flow.image.cover img { object-fit: cover; }
 .flow.image figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 24px 160px; font-family: var(--serif); font-style: italic; font-size: 30px; color: var(--accent); background: color-mix(in srgb, var(--paper) 85%, transparent); }
 html[data-theme="dark"] .flow.image img { filter: brightness(.9); }
+/* Presenter's guide (slides/g*.html): denser slides, a table and the arc chart */
+.slide.flow.dense { padding: 84px 120px 96px; font-size: 26px; }
+.flow.dense h2 { font-size: 52px; margin: 0 0 18px; }
+.flow.dense .lede { font-size: 32px; margin: 0 0 28px; max-width: none; }
+.flow.dense .foot { left: 120px; right: 120px; bottom: 40px; }
+.flow .gtable { width: 100%; border-collapse: collapse; font-size: 24px; line-height: 1.35; }
+.flow .gtable th { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent); text-align: left; font-size: 23px; padding: 0 22px 10px 0; border-bottom: 2px solid var(--rule-strong); }
+.flow .gtable td { padding: 13px 22px 13px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.flow .gtable td.act { font-family: var(--serif); font-size: 25px; width: 15%; }
+.flow .gtable td.n, .flow .gtable td.t { color: var(--muted); white-space: nowrap; }
+.flow .gtable td.feel { font-family: var(--serif); font-style: italic; color: var(--accent-deep); width: 19%; }
+.flow .arc { width: 100%; height: auto; display: block; margin-top: 8px; }
+.flow .arc .curve { fill: none; stroke: var(--accent); stroke-width: 5; stroke-linejoin: round; stroke-linecap: round; }
+.flow .arc .axis { stroke: var(--rule-strong); stroke-width: 2; }
+.flow .arc .day { stroke: var(--rule-strong); stroke-width: 2; stroke-dasharray: 8 8; }
+.flow .arc .dot { fill: var(--accent); }
+.flow .arc .quiet { fill: var(--paper); stroke: var(--accent); stroke-width: 4; }
+.flow .arc text { font-family: var(--sans); font-size: 22px; fill: var(--ink); paint-order: stroke; stroke: var(--slide-bg, var(--paper)); stroke-width: 10px; stroke-linejoin: round; }
+.flow .arc .lbl { font-family: var(--serif); font-style: italic; font-size: 24px; fill: var(--accent-deep); }
+.flow .arc .act { font-family: var(--serif); font-size: 26px; fill: var(--muted); }
+.flow .arc .dayl { font-family: var(--serif); font-style: italic; font-size: 26px; fill: var(--muted); }
+.flow .cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.flow .cards.two { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.flow.dense .card { padding: 26px 30px; font-size: 23px; line-height: 1.4; }
+.flow.dense .card h3 { font-size: 26px; margin: 0 0 10px; }
+.flow.dense .card p { margin: 0 0 10px; }
+.flow.dense .card ul { padding-left: 1em; }
+.flow.dense .card li { margin: 0 0 8px; }
+.flow .ref { color: var(--muted); font-style: normal; white-space: nowrap; }
 
 /* 7. Chrome */
 .progress { position: fixed; left: 0; bottom: 0; height: 3px; background: var(--accent); width: 0; transition: width .3s ease; z-index: 20; opacity: .8; }
